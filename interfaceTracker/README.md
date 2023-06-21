@@ -11,7 +11,7 @@ The simplest command to run the code through the Command Line Interface (CLI) is
 `$ python InterfaceTracker.py -sd <simDir> -nupt <int> -u <string> <string> <string> -ti <float> <int>`
 
 ### Author:
-### Meisam Adibifard, madibi1@lsu.edu, me.adibifard@gmail.com
+#### Meisam Adibifard, madibi1@lsu.edu, me.adibifard@gmail.com
 
 ### PI:
-### Dr. Olufemi Olorode, folorode@lsu.edu
+#### Dr. Olufemi Olorode, folorode@lsu.edu
