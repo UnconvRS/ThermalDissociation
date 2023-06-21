@@ -1,5 +1,9 @@
-# Written by: Meisam Adibifard (PhD Student in Engineering Science, Louisiana State University)
-# This script load a molecule, import the lammps trajectory, and renders the time tailored images at different clipping planes
+# Written by: Meisam Adibifard 
+# PhD Student in Engineering Science
+# Louisiana State University, USA
+# 2022-2023
+
+# code description: this script divides the simulation box into multiple slices and renders each slice to a separate image file
 
 # a procedure to set the display settings
 proc SetDisplaySettings {} {
@@ -10,7 +14,7 @@ proc SetDisplaySettings {} {
     display projection orthographic
 }
 
-# a procedure to modify the molecule's representation settings
+# a procedure to modify the molecule's representation
 proc ModifyMolRepr {molID bwc} {
 	# create new representations until the number of representations==2
 	set numRep [molinfo $molID  get numreps]
@@ -53,7 +57,7 @@ proc GetBoxCoord {atoms} {
 	return "$zmin $zmax"
 }
 
-# a procedure to update the location of the moving slides within the box
+# a procedure to update the location of the clipping plane within the simulation box
 proc CalcSlicesLoc {Ns atoms} {
 	# get box boundaries
 	set Zminmax [GetBoxCoord $atoms]
@@ -80,7 +84,7 @@ proc CalcSlicesLoc {Ns atoms} {
 	return "{$z_clipPlanes0}  {$z_clipPlanes1}"
 }
 
-# a procedure to return a string with n number of zeros depending upon the number of meaningful digits given to it as input
+# a procedure to pad a number with leading zeros
 proc GenZerosString {number_digits} {
 
 	# the total number of digits (including zeros and non-zeros)
@@ -92,28 +96,13 @@ proc GenZerosString {number_digits} {
 
 }
 
-############ load the LAMMPS data file and load the trajectory file into the loaded molecule ############
-#set lmp_datatrj_dir ""
-
-
-#set lmp_datafile_name ""
-#set lmp_datafile_path [join [list $lmp_datatrj_dir$lmp_datafile_name]]
-
-#set lmp_trjfile_name ""
-#set lmp_trjfile_path [join [list $lmp_datatrj_dir$lmp_trjfile_name]]
-
-# load the LAMMPS .data file
-#topo readlammpsdata lmp_datafile_path
-
-# load the LAMMPS .trj file into the loaded molecule
-#mol addfile $lmp_trjfile_path time 1
-
 ############ the TCL script to render the slices of lammps trajectories ############
-# set the specifications of the hydrate slides in the z-direction (all spatial values in Angstrom)
+# set the specifications of the hydrate slides in the z-direction (all spatial variables in Angstrom)
 # number of slices
 set Ns 5 
-set all [atomselect top all] 
 
+# select all atoms
+set all [atomselect top all] 
 
 # Define the list of subdirectories
 set clipPlane_subdirs []
@@ -132,29 +121,32 @@ set imgext ".ppm"
 set sep "-"
 
 
-# set rendering directory
-set render_dir "/Users/unconvrs/Gas Hydrate/MDsim_hpc/renders_tmp/Tb_288K/rest10/sliced_images/output_blacknwhite"
+# specify the rendering directory
+set render_dir "/path/to/save/the/rendered/images"
 cd  $render_dir
+
+# generate subdiractories insdie the rendering directory
 foreach {subdir} $clipPlane_subdirs {file mkdir $subdir}
 
-# initiate the display settings
+# set the display settings
 SetDisplaySettings
-ModifyMolRepr $MolID "bw"
+ModifyMolRepr $MolID "bw" 
 
-# activate the clipplanes
+# activate the clipping planes
 mol clipplane status 0 0 $MolID 1
 mol clipplane status 1 0 $MolID 1
 
-# set normal vector for the clipping plane (we will have two clipping planes acting in reverse directions)
+# set normal vector for the clipping planes (we have two clipping planes moving in the reverse direction)
 mol clipplane normal 0 0 $MolID "0 0 -1"
 mol clipplane normal 1 0 $MolID "0 0 +1"
 
-# Iterate over the position of the interface 
-for {set frame 0} {$frame < $Numframes} {incr frame} {
-    # Go to the next frame
+# iterate over the frames of the simulation
+for {set frame 0} {$frame < $fr_final} {incr frame} {
+    # go to the frame
     animate goto $frame
     sleep 1
-    # determine the min-max of the slices based on the updated box coordinates
+	
+    # determine the min-max of the box-slice based on the current box coordinates
     set Sloc [CalcSlicesLoc $Ns $all]
     set z_clipPlanes0 [lindex $Sloc 0]
     set z_clipPlanes1 [lindex $Sloc 1]
@@ -164,26 +156,29 @@ for {set frame 0} {$frame < $Numframes} {incr frame} {
     	set current_cplane_dir [lindex $clipPlane_subdirs $index]
     	cd  $current_cplane_dir
     	
+		# calculate the position of the clipping planes for the current slice
     	set z_current_cPlane0 [lindex $z_clipPlanes0  $index]
     	set z_current_cPlane1 [lindex $z_clipPlanes1  $index]
-    	# update the position of the clipping planes
+		
+    	# move the clipping planes to the updated position
     	mol clipplane center 0 0 $MolID "0 0 $z_current_cPlane0"
     	mol clipplane center 1 0 $MolID "0 0 $z_current_cPlane1"
     	display update
     	sleep 1
     	
-    	# get the current frame number (this will be the filename for the rendered image)
+    	# get the current frame number 
     	set frameCurrent [molinfo top get frame]
     	
-    	# get the number of digits in the fram number
+    	# pad the frame number with leading zeros to generate the file name for the rendered image
     	set num_digits [string length $frameCurrent]
 		set zeros_string [GenZerosString $num_digits]
     	set rendering_filename [join [list $current_cplane_dir$sep$zeros_string$frameCurrent$imgext]]
     	
-    	# render the current VMD scene to an image
+    	# render the current vmd scene to the image
     	render TachyonInternal $rendering_filename
     	sleep 1
-    	# resort to the rendering directory
+		
+    	# return to the rendering directory
     	cd $render_dir	
     }  
 }
