@@ -7,6 +7,7 @@ The Python code `InterfaceTracker.py` is the main file to run the code.
 
 ### Basic Usage:
 Following inputs are required to running the code:
+
 '$ python InterfaceTracker.py -sd <simDir> -nupt <int> -u <string> <string> <string> -ti <float> <int>'
 
 #### Author:
