@@ -10,8 +10,8 @@ The simplest command to run the code through the Command Line Interface (CLI) is
 
 `$ python InterfaceTracker.py -sd <simDir> -nupt <int> -u <string> <string> <string> -ti <float> <int>`
 
-#### Author:
+### Author:
 ### Meisam Adibifard, madibi1@lsu.edu, me.adibifard@gmail.com
 
-#### PI:
+### PI:
 ### Dr. Olufemi Olorode, folorode@lsu.edu
