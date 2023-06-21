@@ -6,7 +6,7 @@ The Python code `InterfaceTracker.py` is the main file to run the code.
 ### Prerequisites:
 
 ### Basic Usage:
-The simplest command to run the code through Command Line Interface (CLI) is as below:
+The simplest command to run the code through the Command Line Interface (CLI) is as below:
 
 `$ python InterfaceTracker.py -sd <simDir> -nupt <int> -u <string> <string> <string> -ti <float> <int>`
 
