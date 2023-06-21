@@ -14,4 +14,4 @@ The simplest command to run the code through the Command Line Interface (CLI) is
 ### Meisam Adibifard, madibi1@lsu.edu, me.adibifard@gmail.com
 
 #### PI:
-### Dr. Olufemi Olorode
+### Dr. Olufemi Olorode, folorode@lsu.edu
