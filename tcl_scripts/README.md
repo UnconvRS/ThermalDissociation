@@ -1,8 +1,12 @@
-## TCL scripts to run in VMD 
+## TCL scripts to run in VMD (Visual Molecular Dynamics)
 
 There are two TCL scripts in this directory. The goal of each script is explained below:
 
 #### 1. RenderWithClippingPlanes.tcl
+This script gets the loaded molecule in VMD
+
+#### 2. load_lmptrj_multipleRestarts.tcl
+
 
 ### Prerequisites:
 
