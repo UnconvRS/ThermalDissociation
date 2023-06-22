@@ -1,8 +1,8 @@
-## TCL scripts to run in VMD (Visual Molecular Dynamics)
+# TCL scripts to run in VMD (Visual Molecular Dynamics)
 
 There are two TCL scripts in this directory. The goal of each script is explained below:
 
-### 1. RenderWithClippingPlanes.tcl
+## 1. RenderWithClippingPlanes.tcl
 This script is designed to work with VMD (Visual Molecular Dynamics) software. It takes the currently loaded molecule in VMD, creates slices for each simulation frame using two clipping planes with opposite normal vectors, and renders the resulting slice into an image.
 
 ### Usage:
@@ -21,7 +21,7 @@ For example, if you want to create 10 slices and save the images to a directory 
 
 `set render_dir "/home/user/rendered_images"`
 
-### 2. load_lmptrj_multipleRestarts.tcl
+## 2. load_lmptrj_multipleRestarts.tcl
 
 This script is designed to work with VMD (Visual Molecular Dynamics) software. It is used to import and process multiple LAMMPS restart files. The script reads the path to a parent directory that contains all the restart folders (each containing individual simulation results). It then loads the topological data of the molecules into VMD. The script iterates through the restart folders, importing the trajectory of each restart case into the loaded molecules. Finally, it wraps the coordinates of the molecules inside the simulation box.
 
