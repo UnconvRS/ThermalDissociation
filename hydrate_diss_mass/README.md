@@ -5,7 +5,7 @@ This python script, `hyd_diss_mass.py`, processes images of molecular trajectori
 ## Basic Usage
 
 ```bash
-python hyd_diss_mass.py -sd <path_to_simulation_directory> -nupt <number_of_perpendicular_unit_cells> -su <simulation_unit_time> <simulation_unit_length> -ou <output_unit_time> <output_unit_length> -ti <time_step> <dump_freq>```
+python hyd_diss_mass.py -sd <path_to_simulation_directory> -nupt <number_of_perpendicular_unit_cells> -su <simulation_unit_time> <simulation_unit_length> -ou <output_unit_time> <output_unit_length> -ti <time_step> <dump_freq> bash```
 
 
 ### Author:
