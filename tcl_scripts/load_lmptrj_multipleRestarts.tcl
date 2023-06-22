@@ -10,7 +10,7 @@ proc GenZerosString {number_digits} {
 
 }
 
-set dir_ref "/scratch/madibi/MDSim/ch4_hydrate/Mw_Model/CalcTdiss/Interface_method/NPT/Box_80_10_10/p_100atm_new/NPHSimulations/Teq_283K/Tb_288K/"
+set dir_ref "/path/to/parent/directory/"
 set dir_tmpl "rest"
 set num_rest_folder_init 7
 set num_rest_folder_final 12
