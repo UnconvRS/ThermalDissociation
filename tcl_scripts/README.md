@@ -24,6 +24,19 @@ For example, if you want to create 10 slices and save the images to a directory 
 
 
 ### 2. load_lmptrj_multipleRestarts.tcl
+#### 1. The number of slices: 
+
+The user can specify the number of trajectory slices. This can be set in the script on the line with set Ns 5. Replace 5 with the desired number of slices.
+
+ #### 2. Rendering directory: 
+ 
+ The directory where the rendered images will be saved. This can be set in the script on the line with `set render_dir "/path/to/save/the/rendered/images"`. Replace `/path/to/save/the/rendered/images` with your preferred directory path.
+
+For example, if you want to create 10 slices and save the images to a directory at `/home/user/rendered_images`, you would modify the lines as follows:
+
+`set Ns 10`
+
+`set render_dir "/home/user/rendered_images"`
 
 
 ### Prerequisites:
