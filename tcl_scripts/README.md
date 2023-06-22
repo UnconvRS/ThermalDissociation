@@ -18,6 +18,7 @@ The user can specify the number of trajectory slices. This can be set in the scr
 For example, if you want to create 10 slices and save the images to a directory at `/home/user/rendered_images`, you would modify the lines as follows:
 
 `set Ns 10`
+
 `set render_dir "/home/user/rendered_images"`
 
 
