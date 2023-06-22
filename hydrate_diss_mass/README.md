@@ -23,7 +23,7 @@ Optional Arguments
 `-si <number_of_skipped_images>`: To speed up processing, users can set this argument to skip a certain number of images.
 
 ## Sample Data
-Sample data is located in the data folder. Users can run the script using this data to test the functionality of the code. For Windows users, a .bat script is provided to run the code on the sample data, while Linux users can use the provided .sh script.
+Sample data is located in the data folder. Users can run the script using this data to test the functionality of the code. For Windows users, the `run_example_win.bat` script is provided to run the code on the sample data, while Linux users can use the provided `run_example_linux.sh` script.
 
 
 
