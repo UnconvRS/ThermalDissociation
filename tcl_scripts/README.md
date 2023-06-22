@@ -34,7 +34,7 @@ This is the path to the parent directory that contains the restart cases. You ca
 
 #### 2. Restart Folder String Pattern: 
 
-This is the common string pattern in the restart folders' names. This can be modified on the line with `set dir_tmpl "rest"`.
+This is the common string pattern in the restart folders' names. This can be modified on the line with `set dir_tmpl "rest"`. Note that the name of each restart folder must contain a two-digit number. If the restart case falls below 10, then it must be left-padded with a leading zero.
 
 #### 3. First and Last Restart Cases: 
 
