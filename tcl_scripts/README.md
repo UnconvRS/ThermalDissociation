@@ -2,7 +2,7 @@
 
 There are two TCL scripts in this directory. The goal of each script is explained below:
 
-#### RenderWithClippingPlanes.tcl
+#### 1. RenderWithClippingPlanes.tcl
 
 ### Prerequisites:
 
