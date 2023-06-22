@@ -40,9 +40,9 @@ This is the common string pattern in the restart folders' names. This can be mod
 
 The script will read results starting from the first restart case and up to the last restart case. These can be set on the lines with `set num_rest_folder_init 7` and `set num_rest_folder_final 12`. Replace 7 and 12 with your preferred start and end cases.
 
-#### 4. LAMMPS Data File Name: 
+#### 4. Molecular Topology File: 
 
-The name of the LAMMPS data file from which to read the topological data. This can be modified on the line with `set datafile_name "MwHydarteTime0.data"`.
+The name of the file from which to read the topological data. This can be a LAMMPS `.data` or a GROMACS `.gro` file. The type of the topology file is specified in the line `set mol_type "lmp_data"`. The topology file should be located in the parent directory. 
 
 #### 5. LAMMPS Trajectory File Name: 
 
