@@ -15,8 +15,19 @@ set dir_tmpl "rest"
 set num_rest_folder_init 7
 set num_rest_folder_final 12
 
-set datafile_name "MwHydarteTime0.data"
-set lmp_trjfile_name "NPH_Trajectory.lammpstrj"
+# set the type of data file [lmp_data or gro]
+set mol_type "lmp_data"
+
+# read the molecular topology info
+if {$mol_type=="lmp_data"} {
+	set mol_topology_file [glob -directory $dir_ref *.data]
+	topo readlammpsdata $mol_topology_file
+} elseif {$mol_type=="gro"} {
+	set mol_topology_file [glob -directory $dir_ref *.gro]
+	mol new $mol_topology_file
+}
+
+set lmp_trjfile_name "trajectory.lammpstrj"
 
 for {set restartNumber $num_rest_folder_init} {$restartNumber <= $num_rest_folder_final} {incr restartNumber} {
 
@@ -28,22 +39,23 @@ for {set restartNumber $num_rest_folder_init} {$restartNumber <= $num_rest_folde
          
 	puts $currentRestDir 
       
-        set currentRestDir_path [join [list $dir_ref$currentRestDir]]
-        cd $currentRestDir_path
-
-	# read the lammps data file if we are in restart0
-	if {$restartNumber==$num_rest_folder_init} {
-		topo readlammpsdata $datafile_name
-	}
-        	
-	# load the lammps trajectory file
+	set currentRestDir_path [join [list $dir_ref$currentRestDir]]
+	
+	cd $currentRestDir_path
+	
+	# load the lammps trajectory data
 	mol addfile $lmp_trjfile_name waitfor all
 	
 
 }
 
+cd $dir_ref
+
 # wrap the coordinates of the atoms after loading all the lammps trajectory files
-pbc wrap -all
+pbc wrap -compound res -all
+
+# delete the 1st frame
+animate delete beg 0 end 0 waitfor all molid [molinfo top]
 
 
 
