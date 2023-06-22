@@ -43,8 +43,8 @@ For example, if you want to create 10 slices and save the images to a directory 
 
 ### Basic Usage:
 
-#### Author:
+### Author:
 ### Meisam Adibifard, madibi1@lsu.edu, me.adibifard@gmail.com
 
-#### PI:
+### PI:
 ### Dr. Olufemi Olorode
