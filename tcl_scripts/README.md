@@ -7,11 +7,11 @@ This script is designed to work with VMD (Visual Molecular Dynamics) software. I
 
 ### Usage:
 #### Input parameters:
-#### 1. The number of slices: 
+#### 1. The number of Slices: 
 
 The user can specify the number of trajectory slices. This can be set in the script on the line with set Ns 5. Replace 5 with the desired number of slices.
 
- #### 2. Rendering directory: 
+ #### 2. Rendering Directory: 
  
  The directory where the rendered images will be saved. This can be set in the script on the line with `set render_dir "/path/to/save/the/rendered/images"`. Replace `/path/to/save/the/rendered/images` with your preferred directory path.
 
@@ -20,28 +20,48 @@ For example, if you want to create 10 slices and save the images to a directory 
 `set Ns 10`
 
 `set render_dir "/home/user/rendered_images"`
-
-
 
 ### 2. load_lmptrj_multipleRestarts.tcl
-#### 1. The number of slices: 
 
-The user can specify the number of trajectory slices. This can be set in the script on the line with set Ns 5. Replace 5 with the desired number of slices.
+This script is designed to work with VMD (Visual Molecular Dynamics) software. It is used to import and process multiple LAMMPS restart files. The script reads the path to a parent directory that contains all the restart folders (each containing individual simulation results). It then loads the topological data of the molecules into VMD. The script iterates through the restart folders, importing the trajectory of each restart case into the loaded molecules. Finally, it wraps the coordinates of the molecules inside the simulation box.
 
- #### 2. Rendering directory: 
- 
- The directory where the rendered images will be saved. This can be set in the script on the line with `set render_dir "/path/to/save/the/rendered/images"`. Replace `/path/to/save/the/rendered/images` with your preferred directory path.
+### Usage:
+#### Input parameters:
 
-For example, if you want to create 10 slices and save the images to a directory at `/home/user/rendered_images`, you would modify the lines as follows:
+#### 1. Parent Directory Path: 
 
-`set Ns 10`
+This is the path to the parent directory that contains the restart cases. You can set this in the script on the line with set dir_ref "/path/to/parent/directory". Replace /path/to/parent/directory with your preferred directory path.
 
-`set render_dir "/home/user/rendered_images"`
+#### 2. Restart Folder String Pattern: 
 
+This is the common string pattern in the restart folders' names. This can be modified on the line with set dir_tmpl "rest".
 
-### Prerequisites:
+#### 3. First and Last Restart Cases: 
 
-### Basic Usage:
+The script will read results starting from the first restart case and up to the last restart case. These can be set on the lines with set num_rest_folder_init 7 and set num_rest_folder_final 12. Replace 7 and 12 with your preferred start and end cases.
+
+#### 4. LAMMPS Data File Name: 
+
+The name of the LAMMPS data file from which to read the topological data. This can be modified on the line with set datafile_name "MwHydarteTime0.data".
+
+#### 5. LAMMPS Trajectory File Name: 
+
+The name of the LAMMPS trajectory file. This can be modified on the line with set lmp_trjfile_name "NPH_Trajectory.lammpstrj".
+
+For example, if your parent directory is at `/home/user/restarts`, the string pattern in the restart folders is `rest`, you want to read results from restart cases `5` to `10`, your LAMMPS data file is named `my_lmpData.data`, and your LAMMPS trajectory file is named `myTrajectory.lammpstrj`, you would modify the lines as follows:
+
+`set dir_ref "/home/user/restarts"`
+
+`set dir_tmpl "rest"`
+
+`set num_rest_folder_init 5`
+
+`set num_rest_folder_final 10`
+
+`set datafile_name "myData.data"`
+
+`set lmp_trjfile_name "myTrajectory.lammpstrj"`
+
 
 ### Author:
 ### Meisam Adibifard, madibi1@lsu.edu, me.adibifard@gmail.com
