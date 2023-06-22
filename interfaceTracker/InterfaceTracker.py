@@ -33,8 +33,8 @@ import ntpath
 
 # import in-house modules
 from modules.units import units 
-from modules.settings import ImageCrystSettings
-from modules.simulation import DynamicData, SimBox, simulation
+from modules.settings import simSettings
+from modules.simulation import  simulation
 
 # Here the code begins
 # set type of input
@@ -46,7 +46,8 @@ if toi==1:
     parser.add_argument("--SimDir","-sd",type=str,required=True,help='The path to the simulation directory where all restart folders are located (required)')
     parser.add_argument("--NucellPerTraj","-nupt",type=int,required=True, help="""The depth of each simulation trajectory, which is the number of unit-cells
         by which each simulation trajectory is extended in the direction normal to its plane (required)""")
-    parser.add_argument("--units","-u",type=int,required=True,help='The units for the output data')
+    parser.add_argument("--units","-ou",type=str,required=True,help='The units for the output data in the following format [time,length]')
+    parser.add_argument("--units","-su",type=str,required=True,help='The units for the simulation data in the following format [time,length]')
     parser.add_argument("--tinfo","-ti",nargs=2,required=True,help='Gets dt (fs), and dump_freq (#time-steps) respectively (required)')
 
     # optional arguments
@@ -58,26 +59,25 @@ if toi==1:
     simDir=str(pathlib.PurePosixPath(args.SimDir))
     dt=float(args.tinfo[0])
     dump_freq=int(args.tinfo[1])
+    
     NumCrystPerLayer=args.NucellPerTraj
 
     numImagesSkipped=args.NumImagesSkipped
     
     
-SimUnits=units('fs','','A')
-OutUnits=units('ns','gr','A')
+SimUnits=units('fs','A')
+OutUnits=units('ns','A')
 
 dump_freq=20000 # number of time-steps per LAMMPS trajectory dump
 dt=10 #fs (simulation time-step)
-simDir=r'D:\renders_tmp\p75atm_Teq281K_Tb291K'
-SimDynamics=DynamicData(dt,dump_freq)
-MySimBox=SimBox(80,10,10,SimDynamics,SimUnits,OutUnits)
+simDir=r'inputs\trajectories'
+DynamicData={"dt":dt,"dump_freq":dump_freq}
 
 numImagesSkipped=100
 NumCrystPerLayer=2
-imageCrystalSetting=ImageCrystSettings(numImagesSkipped,NumCrystPerLayer)
+simulation_settings=simSettings(numImagesSkipped,NumCrystPerLayer,DynamicData,SimUnits,OutUnits)
 
-MySimCase=simulation(simDir,MySimBox)
-MySimCase.process_restarts()
-MySimCase.collectWriteOutputData()
+SimCase=simulation(simDir)
+SimCase.run()
 
 pass

@@ -5,7 +5,7 @@ a python module that holds the unit class
 
 
 class units:
-    #### unit convertors ####
+    #### conversion factors ####
 
     # temporal units
     fs2ps=1e-3 # femtosecond to picosecond
@@ -19,8 +19,7 @@ class units:
     A2cm=1e-8         # Angstrom to centimeter
     A2m=1e-10         # Angstrom to meter
 
-    def __init__(self,time,mass,length):
+    def __init__(self,time,length):
         self.time=time
-        self.mass=mass
         self.length=length
 
