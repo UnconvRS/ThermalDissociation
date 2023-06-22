@@ -7,11 +7,11 @@ This script is designed to work with VMD (Visual Molecular Dynamics) software. I
 
 ### Usage:
 ### Input parameters:
-#### 1. The number of Slices: 
+#### 1. The number of slices: 
 
 The user can specify the number of trajectory slices. This can be set in the script on the line with set Ns 5. Replace 5 with the desired number of slices.
 
- #### 2. Render Directory: 
+ #### 2. Rendering directory: 
  
  The directory where the rendered images will be saved. This can be set in the script on the line with `set render_dir "/path/to/save/the/rendered/images"`. Replace `/path/to/save/the/rendered/images` with your preferred directory path.
 
