@@ -30,23 +30,23 @@ This script is designed to work with VMD (Visual Molecular Dynamics) software. I
 
 #### 1. Parent Directory Path: 
 
-This is the path to the parent directory that contains the restart cases. You can set this in the script on the line with set dir_ref "/path/to/parent/directory". Replace /path/to/parent/directory with your preferred directory path.
+This is the path to the parent directory that contains the restart cases. You can set this in the script on the line with `set dir_ref "/path/to/parent/directory"`. Replace `/path/to/parent/directory` with your preferred directory path.
 
 #### 2. Restart Folder String Pattern: 
 
-This is the common string pattern in the restart folders' names. This can be modified on the line with set dir_tmpl "rest".
+This is the common string pattern in the restart folders' names. This can be modified on the line with `set dir_tmpl "rest"`.
 
 #### 3. First and Last Restart Cases: 
 
-The script will read results starting from the first restart case and up to the last restart case. These can be set on the lines with set num_rest_folder_init 7 and set num_rest_folder_final 12. Replace 7 and 12 with your preferred start and end cases.
+The script will read results starting from the first restart case and up to the last restart case. These can be set on the lines with `set num_rest_folder_init 7` and `set num_rest_folder_final 12`. Replace 7 and 12 with your preferred start and end cases.
 
 #### 4. LAMMPS Data File Name: 
 
-The name of the LAMMPS data file from which to read the topological data. This can be modified on the line with set datafile_name "MwHydarteTime0.data".
+The name of the LAMMPS data file from which to read the topological data. This can be modified on the line with `set datafile_name "MwHydarteTime0.data"`.
 
 #### 5. LAMMPS Trajectory File Name: 
 
-The name of the LAMMPS trajectory file. This can be modified on the line with set lmp_trjfile_name "NPH_Trajectory.lammpstrj".
+The name of the LAMMPS trajectory file. This can be modified on the line with `set lmp_trjfile_name "NPH_Trajectory.lammpstrj"`.
 
 For example, if your parent directory is at `/home/user/restarts`, the string pattern in the restart folders is `rest`, you want to read results from restart cases `5` to `10`, your LAMMPS data file is named `my_lmpData.data`, and your LAMMPS trajectory file is named `myTrajectory.lammpstrj`, you would modify the lines as follows:
 
