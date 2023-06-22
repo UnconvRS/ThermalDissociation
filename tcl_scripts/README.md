@@ -63,8 +63,8 @@ For example, if your parent directory is at `/home/user/restarts`, the string pa
 `set lmp_trjfile_name "myTrajectory.lammpstrj"`
 
 
-### Author:
+## Author:
 ### Meisam Adibifard, madibi1@lsu.edu, me.adibifard@gmail.com
 
-### PI:
+## PI:
 ### Dr. Olufemi Olorode
