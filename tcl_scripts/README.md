@@ -30,7 +30,7 @@ This script is designed to work with VMD (Visual Molecular Dynamics) software. I
 
 #### 1. Parent Directory Path: 
 
-This is the path to the parent directory that contains the restart cases. You can set this in the script on the line with `set dir_ref "/path/to/parent/directory"`. Replace `/path/to/parent/directory` with your preferred directory path.
+This is the path to the parent directory that contains the restart cases. Upon running the script user will be asked to input the parent directory.
 
 #### 2. Restart Folder String Pattern: 
 
