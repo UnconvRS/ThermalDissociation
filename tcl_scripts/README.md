@@ -50,8 +50,6 @@ The name of the file from which to read the topological data. This can be a LAMM
 The name of the LAMMPS trajectory file. This can be modified on the line with `set lmp_trjfile_name "trajectory.lammpstrj"`.
 
 
-
-
 ## Author:
 ### Meisam Adibifard, madibi1@lsu.edu, me.adibifard@gmail.com
 
