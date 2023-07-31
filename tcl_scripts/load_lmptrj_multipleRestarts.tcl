@@ -10,16 +10,30 @@ proc GenZerosString {number_digits} {
 
 }
 
-set dir_ref "/path/to/parent/directory/"
+# a procedure to get a single input form the user
+proc GetInput {input_text} {
+	puts $input_text
+	flush stdout
+        set output [gets stdin]
+	puts $input_text$output	
+        return "$output"
+
+}
+
+#set the path to the results
+set dir_ref [GetInput "path to reference directory (ending with /):"]
+
+set num_rest_folder_init [GetInput "initial restart number:"]
+set num_rest_folder_final [GetInput "final restart number:"]
+
 set dir_tmpl "rest"
-set num_rest_folder_init 7
-set num_rest_folder_final 12
 
 # set the type of data file [lmp_data or gro]
-set mol_type "lmp_data"
+set mol_type [GetInput "topological file (gro or lmpdata):"]
+
 
 # read the molecular topology info
-if {$mol_type=="lmp_data"} {
+if {$mol_type=="lmpdata"} {
 	set mol_topology_file [glob -directory $dir_ref *.data]
 	topo readlammpsdata $mol_topology_file
 } elseif {$mol_type=="gro"} {
@@ -27,7 +41,7 @@ if {$mol_type=="lmp_data"} {
 	mol new $mol_topology_file
 }
 
-set lmp_trjfile_name "trajectory.lammpstrj"
+set lmp_trjfile_name "dump_ch4_tip4p.lammpstrj"
 
 for {set restartNumber $num_rest_folder_init} {$restartNumber <= $num_rest_folder_final} {incr restartNumber} {
 
@@ -45,8 +59,6 @@ for {set restartNumber $num_rest_folder_init} {$restartNumber <= $num_rest_folde
 	
 	# load the lammps trajectory data
 	mol addfile $lmp_trjfile_name waitfor all
-	
-
 }
 
 cd $dir_ref
