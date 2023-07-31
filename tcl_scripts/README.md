@@ -30,7 +30,7 @@ This script is designed to work with VMD (Visual Molecular Dynamics) software. I
 
 #### 1. Parent Directory Path: 
 
-This is the path to the parent directory that contains the restart cases. Upon running the script user will be asked to input the parent directory.
+This is the path to the parent directory that contains the restart cases. The user will be asked to input the parent directory upon running the script.
 
 #### 2. Restart Folder String Pattern: 
 
@@ -38,29 +38,18 @@ This is the common string pattern in the restart folders' names. This can be mod
 
 #### 3. First and Last Restart Cases: 
 
-The script will read results starting from the first restart case and up to the last restart case. These can be set on the lines with `set num_rest_folder_init 7` and `set num_rest_folder_final 12`. Replace 7 and 12 with your preferred start and end cases.
+The script will read results starting from the first restart case and up to the last restart case. The user will be asked to input the first and last restart number upon running the script.
 
 #### 4. Molecular Topology File: 
 
-The name of the file from which to read the topological data. This can be a LAMMPS `.data` or a GROMACS `.gro` file. The type of the topology file is specified in the line `set mol_type "lmp_data"`. The topology file should be located in the parent directory. 
+The name of the file from which to read the topological data. This can be a LAMMPS `.data` or a GROMACS `.gro` file. The topology file should be located in the parent directory. The user will be asked to input the type of topology file upon running the script.
+
 
 #### 5. LAMMPS Trajectory File Name: 
 
 The name of the LAMMPS trajectory file. This can be modified on the line with `set lmp_trjfile_name "trajectory.lammpstrj"`.
 
-For example, if your parent directory is at `/home/user/restarts`, the string pattern in the restart folders is `rest`, you want to read results from restart cases `5` to `10`, your topology file is a LAMMPS data file, and your LAMMPS trajectory file is named `myTrajectory.lammpstrj`, you would modify the lines as follows:
 
-`set dir_ref "/home/user/restarts"`
-
-`set dir_tmpl "rest"`
-
-`set num_rest_folder_init 5`
-
-`set num_rest_folder_final 10`
-
-`set mol_type "lmp_data"`
-
-`set lmp_trjfile_name "myTrajectory.lammpstrj"`
 
 
 ## Author:
