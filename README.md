@@ -8,3 +8,7 @@ This repository contains the tools used in our published paper to study the kine
 
 These tools have been carefully developed and used in our research, and we believe that they can be beneficial for similar studies in the field.
 
+# NEWS
+I am looking to fill two fully funded Ph.D. positions on DOE grant that focuses on coarse-grained molecular dynamics simulation of CO2 gas hydrates in my research group at Louisiana State University. The position requires research experience with MD, LAMMPS, or GROMACS. Please feel free to contact me at folorode@lsu.edu if you are interested in this.
+
+
